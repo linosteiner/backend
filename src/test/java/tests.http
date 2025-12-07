@@ -1,0 +1,88 @@
+### 1. Get all existing measurements
+GET http://localhost:8080/rest/measurements
+Accept: application/json
+
+### 2. Create Record 1 (Felix)
+POST http://localhost:8080/rest/measurements
+Content-Type: application/json
+
+{
+  "date": "01.12.2025",
+  "user": "felix",
+  "height": 180.0,
+  "weight": 80.0
+}
+
+### 3. Create Record 2 (Beate)
+POST http://localhost:8080/rest/measurements
+Content-Type: application/json
+
+{
+  "date": "01.12.2025",
+  "user": "beate",
+  "height": 150.0,
+  "weight": 50.0
+}
+
+### 4. Verify measurements were added
+GET http://localhost:8080/rest/measurements
+Accept: application/json
+
+### 5. Negative Test: Invalid Height (Negative Value)
+# Expected Result: 400 Bad Request
+POST http://localhost:8080/rest/measurements
+Content-Type: application/json
+
+{
+  "date": "01.12.2025",
+  "user": "tester",
+  "height": -150.0,
+  "weight": 80.0
+}
+
+> {%
+    client.test("Negative Height returns 400", function() {
+        client.assert(response.status === 400, "Expected 400 Bad Request but got " + response.status);
+    });
+%}
+
+### 6. Negative Test: Invalid Weight (Zero Value)
+# Expected Result: 400 Bad Request
+POST http://localhost:8080/rest/measurements
+Content-Type: application/json
+
+{
+  "date": "01.12.2025",
+  "user": "tester",
+  "height": 180.0,
+  "weight": 0.0
+}
+
+> {%
+    client.test("Zero Weight returns 400", function() {
+        client.assert(response.status === 400, "Expected 400 Bad Request but got " + response.status);
+    });
+%}
+
+### 7. Negative Test: Method Not Allowed (DELETE Categories)
+# Expected Result: 405 Method Not Allowed (Defined in StaticDataResource)
+DELETE http://localhost:8080/rest/categories
+
+> {%
+    client.test("DELETE Categories returns 405", function() {
+        client.assert(response.status === 405, "Expected 405 Method Not Allowed but got " + response.status);
+    });
+%}
+
+### 8. Negative Test: Method Not Allowed (POST Statistics)
+# Expected Result: 405 Method Not Allowed (Defined in StaticDataResource)
+POST http://localhost:8080/rest/statistics
+Content-Type: application/json
+
+{}
+
+> {%
+    client.test("POST Statistics returns 405", function() {
+        client.assert(response.status === 405, "Expected 405 Method Not Allowed but got " + response.status);
+    });
+%}
