@@ -20,10 +20,6 @@ micronaut:
       swagger-ui:
         paths: classpath:META-INF/swagger/views/swagger-ui
         mapping: /swagger-ui/**
-#datasources:
-#  default:
-#    driver-class-name: org.postgresql.Driver
-#    db-type: postgres
 datasources:
   default:
     url: jdbc:postgresql://localhost:5432/fitapp
@@ -42,4 +38,4 @@ jpa:
       hibernate:
         hbm2ddl:
           auto: validate
-        show_sql: true
+        show_sql: false

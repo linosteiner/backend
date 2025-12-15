@@ -15,10 +15,8 @@ public class SubCategory {
 
     private String name;
 
-    @Column(name = "low_val")
     private Double low;
 
-    @Column(name = "high_val")
     private Double high;
 
     @JsonIgnore
@@ -26,14 +24,43 @@ public class SubCategory {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-    public Double getLow() { return low; }
-    public void setLow(Double low) { this.low = low; }
-    public Double getHigh() { return high; }
-    public void setHigh(Double high) { this.high = high; }
-    public Category getCategory() { return category; }
-    public void setCategory(Category category) { this.category = category; }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Double getLow() {
+        return low;
+    }
+
+    public void setLow(Double low) {
+        this.low = low;
+    }
+
+    public Double getHigh() {
+        return high;
+    }
+
+    public void setHigh(Double high) {
+        this.high = high;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 }

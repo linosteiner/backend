@@ -10,4 +10,5 @@ public record StatisticResponse(
         String source,
         String date,
         Map<String, Statistic> countries
-) {}
+) {
+}

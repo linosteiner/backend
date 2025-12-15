@@ -14,8 +14,7 @@ public class Measurement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "\"user\"", nullable = false)
-    private String user;
+    private String person;
 
     @Column(nullable = false)
     private LocalDate date;
@@ -34,12 +33,12 @@ public class Measurement {
         this.id = id;
     }
 
-    public String getUser() {
-        return user;
+    public String getPerson() {
+        return person;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setPerson(String user) {
+        this.person = user;
     }
 
     public LocalDate getDate() {
