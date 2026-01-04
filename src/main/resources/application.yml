@@ -5,13 +5,31 @@ micronaut:
     port: 8080
     cors:
       enabled: true
+      configurations:
+        web:
+          allowed-origins:
+            - "http://localhost:63342"
+          allowed-methods:
+            - POST
+            - GET
+            - PUT
+            - DELETE
+          allow-credentials: true
   security:
     intercept-url-map:
       - pattern: /swagger/**
         access: isAnonymous()
       - pattern: /swagger-ui/**
         access: isAnonymous()
+      - pattern: /logout
+        access: isAnonymous()
     authentication: session
+    redirect:
+      enabled: false
+    endpoints:
+      logout:
+        enabled: true
+        get-allowed: true
   router:
     static-resources:
       swagger:

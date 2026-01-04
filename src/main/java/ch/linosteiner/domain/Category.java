@@ -7,7 +7,6 @@ import java.util.List;
 
 @Serdeable
 @Entity
-@Table(name = "category")
 public class Category {
 
     @Id

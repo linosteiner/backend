@@ -4,11 +4,9 @@ import io.micronaut.serde.annotation.Serdeable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Serdeable
 @Entity
-@Table(name = "statistic")
 public class Statistic {
 
     @Id

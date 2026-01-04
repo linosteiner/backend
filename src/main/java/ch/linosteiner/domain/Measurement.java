@@ -7,14 +7,15 @@ import java.time.LocalDate;
 
 @Serdeable
 @Entity
-@Table(name = "measurement")
 public class Measurement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String person;
+    @ManyToOne
+    @JoinColumn(name = "principal_id")
+    private Principal principal;
 
     @Column(nullable = false)
     private LocalDate date;
@@ -31,14 +32,6 @@ public class Measurement {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getPerson() {
-        return person;
-    }
-
-    public void setPerson(String user) {
-        this.person = user;
     }
 
     public LocalDate getDate() {
@@ -63,5 +56,13 @@ public class Measurement {
 
     public void setWeight(Double weight) {
         this.weight = weight;
+    }
+
+    public Principal getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(Principal principal) {
+        this.principal = principal;
     }
 }
